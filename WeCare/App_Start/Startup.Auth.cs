@@ -58,11 +58,11 @@ namespace WeCare
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "83823022115-2hfj1iai8smf4mtvgcpf2p84sar9h8tj.apps.googleusercontent.com",
+                ClientSecret = "LC45CsJWPRY4I_sQxhLabdY_"
+            });
         }
     }
 }
