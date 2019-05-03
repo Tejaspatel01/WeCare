@@ -10,16 +10,18 @@ using WeCare.Models;
 
 namespace WeCare.Controllers
 {
+    
     public class DonateMoneysController : Controller
     {
         private DbModel db = new DbModel();
 
         // GET: DonateMoneys
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(db.DonateMoneys.ToList());
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: DonateMoneys/Details/5
         public ActionResult Details(int? id)
         {
@@ -58,6 +60,7 @@ namespace WeCare.Controllers
             return View(donateMoney);
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: DonateMoneys/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,6 +81,7 @@ namespace WeCare.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,Name,Phone,Mode")] DonateMoney donateMoney)
         {
             if (ModelState.IsValid)
@@ -90,6 +94,7 @@ namespace WeCare.Controllers
         }
 
         // GET: DonateMoneys/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +112,7 @@ namespace WeCare.Controllers
         // POST: DonateMoneys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             DonateMoney donateMoney = db.DonateMoneys.Find(id);

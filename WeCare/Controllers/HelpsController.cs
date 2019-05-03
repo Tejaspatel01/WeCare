@@ -10,16 +10,18 @@ using WeCare.Models;
 
 namespace WeCare.Controllers
 {
+    
     public class HelpsController : Controller
     {
         private DbModel db = new DbModel();
 
         // GET: Helps
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(db.Helps.ToList());
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: Helps/Details/5
         public ActionResult Details(int? id)
         {
@@ -57,7 +59,7 @@ namespace WeCare.Controllers
 
             return View(help);
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: Helps/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,6 +80,7 @@ namespace WeCare.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,Name,HelpType,Address")] Help help)
         {
             if (ModelState.IsValid)
@@ -88,7 +91,7 @@ namespace WeCare.Controllers
             }
             return View(help);
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: Helps/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -107,6 +110,7 @@ namespace WeCare.Controllers
         // POST: Helps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Help help = db.Helps.Find(id);

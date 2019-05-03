@@ -24,6 +24,8 @@ namespace WeCare.Controllers
             
             return View();
         }
+
+        [Authorize(Roles = "Administrator")]
         public ActionResult Admin()
         {
 
